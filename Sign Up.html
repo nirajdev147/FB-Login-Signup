@@ -101,10 +101,74 @@
         <br><br>
         <label for="gender">Gender?</label>
         <br><br>
-        
-    </form>
+        <div class="gender-options">
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label>
+            
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            
+            <input type="radio" id="custom" name="gender" value="custom">
+            <label for="custom">Custom</label>
+        </div>
+        <br><br>
+        <div id="pronoun-select">
+            <select name="pronoun">
+                <option value="pronoun" disabled>Select your pronoun</option>
+                <option value="female">She: "Wish her a happy birthday!"</option>
+                <option value="male">He: "Wish him a happy birthday!"</option>
+                <option value="custom">They: "Wish them a happy birthday!"</option>
+            </select>
+        </div>
+        <br>
+        <div id="custom-pronoun-input">
+            <input type="text" id="custom-pronoun" name="custom-pronoun" placeholder="Gender (optional)">
+        </div>
+        <br>
+            <input type="text" name="contact" id="contact" placeholder="Email address or Phone number" required size="25">
+            <br><br>
+            <input type="password" name="password" id="password" placeholder="Password" required size="25">
+            <br>
+            <h6>People who use our service may have uploaded your contact information to Facebook. <a href="https://www.facebook.com/help/637205020878504">Learn more.</a></h6>
 
+            <h6>By clicking Sign Up, you agree to our <a href="https://www.facebook.com/legal/terms/update">Terms</a>,<a href="https://www.facebook.com/privacy/policy/?entry_point=data_policy_redirect&entry=0">Privacy Policy</a> and <a href="https://www.facebook.com/privacy/policies/cookies/?entry_point=cookie_policy_redirect&entry=0">Cookies Policy.</a> You may receive SMS notifications from us and can opt out at any time.</h6>
+
+<!---------------------------------------------------Start of Javascript code------------------------------------------->
+        <script>
+            // Get references to the elements
+            const customRadioButton = document.getElementById('custom');
+            const pronounSelectDiv = document.getElementById('pronoun-select');
+            const customPronounInputDiv = document.getElementById('custom-pronoun-input');
+            const genderRadios = document.querySelectorAll('input[name="gender"]');
     
+            // Function to hide both the pronoun select and custom input divs
+            function hidePronounSelect() {
+                pronounSelectDiv.style.display = 'none'; // Hide pronoun dropdown
+                customPronounInputDiv.style.display = 'none'; // Hide custom pronoun input
+            }
     
+             // Hide elements when clicking on "male", "female", or "custom"
+        genderRadios.forEach(radio => {
+            radio.addEventListener('click', function() {
+                if (radio.value !== 'custom') {
+                    hidePronounSelect(); // Hide both the pronoun dropdown and custom input field
+                }
+            });
+        });
+
+        // Event listener for the "Custom" radio button
+        customRadioButton.addEventListener('click', function() {
+            if (customRadioButton.checked) {
+                // When "Custom" is selected, show the pronoun dropdown and the custom input field
+                pronounSelectDiv.style.display = 'block';
+                customPronounInputDiv.style.display = 'block';
+            }
+        });
+        </script> 
+<!--------------------------------------------------End of javascript code----------------------------------------------------->
+    <input type="submit" value="Sign Up">
+    </form>
+    <br>
+    <a href="/login.html">Already have an account?</a>
 </body>
 </html>
